@@ -1,0 +1,168 @@
+[debug] [2025-11-06T12:31:26.427Z] ----------------------------------------------------------------------
+[debug] [2025-11-06T12:31:26.431Z] Command:       /usr/local/Cellar/node/25.1.0_1/bin/node /usr/local/bin/firebase emulators:start --only functions
+[debug] [2025-11-06T12:31:26.431Z] CLI Version:   14.24.0
+[debug] [2025-11-06T12:31:26.431Z] Platform:      darwin
+[debug] [2025-11-06T12:31:26.431Z] Node Version:  v25.1.0
+[debug] [2025-11-06T12:31:26.433Z] Time:          Thu Nov 06 2025 18:01:26 GMT+0530 (India Standard Time)
+[debug] [2025-11-06T12:31:26.434Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-11-06T12:31:26.668Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-06T12:31:26.672Z] > authorizing via signed-in user (rautrajukumar800@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2025-11-06T12:31:27.066Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-06T12:31:27.066Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-11-06T12:31:27.074Z] Emulator locator file path: /var/folders/_8/myc4y76n5514b3h_nplljvhm0000gn/T/hub-gps-school-d322b.json
+[debug] [2025-11-06T12:31:27.074Z] [hub] writing locator at /var/folders/_8/myc4y76n5514b3h_nplljvhm0000gn/T/hub-gps-school-d322b.json
+[debug] [2025-11-06T12:31:27.502Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-06T12:31:27.502Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-06T12:31:27.502Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-06T12:31:27.502Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect\u001b[22m"}}
+[debug] [2025-11-06T12:31:27.532Z] defaultcredentials: writing to file /Users/rajukumarraut/.config/firebase/rautrajukumar800_gmail_com_application_default_credentials.json
+[debug] [2025-11-06T12:31:27.535Z] Setting GAC to /Users/rajukumarraut/.config/firebase/rautrajukumar800_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/rajukumarraut/.config/firebase/rautrajukumar800_gmail_com_application_default_credentials.json"}}
+[debug] [2025-11-06T12:31:27.536Z] Checked if tokens are valid: true, expires at: 1762434070976
+[debug] [2025-11-06T12:31:27.536Z] Checked if tokens are valid: true, expires at: 1762434070976
+[debug] [2025-11-06T12:31:27.537Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/gps-school-d322b/adminSdkConfig [none]
+[debug] [2025-11-06T12:31:28.103Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/gps-school-d322b/adminSdkConfig 200
+[debug] [2025-11-06T12:31:28.104Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/gps-school-d322b/adminSdkConfig {"projectId":"gps-school-d322b","storageBucket":"gps-school-d322b.firebasestorage.app"}
+[info] i  functions: Watching "/Users/rajukumarraut/Gaushala-Public-School/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/rajukumarraut/Gaushala-Public-School/functions\" for Cloud Functions..."}}
+[debug] [2025-11-06T12:31:28.161Z] Validating nodejs source
+[debug] [2025-11-06T12:31:28.960Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-11-06T12:31:28.960Z] Building nodejs source
+[debug] [2025-11-06T12:31:28.960Z] Failed to find version of module node: reached end of search path /Users/rajukumarraut/Gaushala-Public-School/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "25". Using node@25 from host. 
+[debug] [2025-11-06T12:31:28.963Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-11-06T12:31:28.971Z] Found firebase-functions binary at '/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8397
+
+[debug] [2025-11-06T12:31:29.520Z] Got response from /__/functions.yaml {"endpoints":{"geminiChat":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":10,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"geminiChat"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: geminiChat. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: geminiChat."}}
+[info] ✔  functions[us-central1-geminiChat]: http function initialized (http://127.0.0.1:5001/gps-school-d322b/us-central1/geminiChat). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/gps-school-d322b/us-central1/geminiChat)."}}
+[debug] [2025-11-06T12:31:33.596Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-11-06T12:31:43.905Z] [work-queue] {"queuedWork":["/gps-school-d322b/us-central1/geminiChat-2025-11-06T12:31:43.904Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-06T12:31:43.909Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/gps-school-d322b/us-central1/geminiChat-2025-11-06T12:31:43.904Z"],"workRunningCount":1}
+[debug] [2025-11-06T12:31:43.910Z] Accepted request OPTIONS /gps-school-d322b/us-central1/geminiChat --> us-central1-geminiChat
+[debug] [2025-11-06T12:31:43.927Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-06T12:31:43.929Z] [functions] Got req.url=/gps-school-d322b/us-central1/geminiChat, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/gps-school-d322b/us-central1/geminiChat, mapping to path=/"}}
+[debug] [2025-11-06T12:31:43.938Z] [worker-pool] addWorker(us-central1-geminiChat) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-geminiChat)"}}
+[debug] [2025-11-06T12:31:43.939Z] [worker-pool] Adding worker with key us-central1-geminiChat, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-geminiChat, total=1"}}
+[debug] [2025-11-06T12:31:44.771Z] [runtime-status] [37869] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[runtime-status] [37869] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2025-11-06T12:31:44.773Z] [runtime-status] [37869] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[runtime-status] [37869] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-11-06T12:31:44.774Z] [runtime-status] [37869] Found local functions config: /Users/rajukumarraut/Gaushala-Public-School/functions/.runtimeconfig.json {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[runtime-status] [37869] Found local functions config: /Users/rajukumarraut/Gaushala-Public-School/functions/.runtimeconfig.json"}}
+[debug] [2025-11-06T12:31:44.774Z] [runtime-status] [37869] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[runtime-status] [37869] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2025-11-06T12:31:44.775Z] [runtime-status] [37869] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[runtime-status] [37869] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-11-06T12:31:44.956Z] [runtime-status] [37869] Checked functions.config() {"config":{"gemini":{"key":"AIzaSyCkw_cPT9QG-nYh1PupsYwCkIsma64Qa5k"}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[runtime-status] [37869] Checked functions.config() {\"config\":{\"gemini\":{\"key\":\"AIzaSyCkw_cPT9QG-nYh1PupsYwCkIsma64Qa5k\"}}}"}}
+[debug] [2025-11-06T12:31:44.957Z] [runtime-status] [37869] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"6.6.0","resolution":"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-functions/lib/v2/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[runtime-status] [37869] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-functions/lib/v2/index.js\"}}"}}
+[debug] [2025-11-06T12:31:44.958Z] [runtime-status] [37869] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[runtime-status] [37869] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-11-06T12:31:44.961Z] [runtime-status] [37869] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[runtime-status] [37869] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2025-11-06T12:31:44.965Z] [runtime-status] [37869] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[runtime-status] [37869] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-11-06T12:31:44.965Z] [runtime-status] [37869] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[runtime-status] [37869] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/rajukumarraut/Gaushala-Public-School/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2025-11-06T12:31:44.979Z] [runtime-status] [37869] Functions runtime initialized. {"cwd":"/Users/rajukumarraut/Gaushala-Public-School/functions","node_version":"25.1.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[runtime-status] [37869] Functions runtime initialized. {\"cwd\":\"/Users/rajukumarraut/Gaushala-Public-School/functions\",\"node_version\":\"25.1.0\"}"}}
+[debug] [2025-11-06T12:31:44.979Z] [runtime-status] [37869] Listening to port: /var/folders/_8/myc4y76n5514b3h_nplljvhm0000gn/T/fire_emu_5526ca36331f5dcb.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[runtime-status] [37869] Listening to port: /var/folders/_8/myc4y76n5514b3h_nplljvhm0000gn/T/fire_emu_5526ca36331f5dcb.sock"}}
+[debug] [2025-11-06T12:31:45.071Z] [worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: IDLE"}}
+[debug] [2025-11-06T12:31:45.071Z] [worker-pool] submitRequest(triggerId=us-central1-geminiChat) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-geminiChat)"}}
+[info] i  functions: Beginning execution of "us-central1-geminiChat" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Beginning execution of \"us-central1-geminiChat\""}}
+[debug] [2025-11-06T12:31:45.073Z] [worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: BUSY"}}
+[debug] [2025-11-06T12:31:45.082Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-geminiChat" in 9.118291ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finished \"us-central1-geminiChat\" in 9.118291ms"}}
+[debug] [2025-11-06T12:31:45.083Z] [worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: IDLE"}}
+[debug] [2025-11-06T12:31:45.083Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-06T12:31:45.083Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-06T12:31:45.083Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-06T12:31:45.087Z] [work-queue] {"queuedWork":["/gps-school-d322b/us-central1/geminiChat-2025-11-06T12:31:45.087Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-06T12:31:45.088Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/gps-school-d322b/us-central1/geminiChat-2025-11-06T12:31:45.087Z"],"workRunningCount":1}
+[debug] [2025-11-06T12:31:45.088Z] Accepted request POST /gps-school-d322b/us-central1/geminiChat --> us-central1-geminiChat
+[debug] [2025-11-06T12:31:45.091Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-06T12:31:45.091Z] [functions] Got req.url=/gps-school-d322b/us-central1/geminiChat, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/gps-school-d322b/us-central1/geminiChat, mapping to path=/"}}
+[debug] [2025-11-06T12:31:45.091Z] [worker-pool] submitRequest(triggerId=us-central1-geminiChat) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-geminiChat)"}}
+[info] i  functions: Beginning execution of "us-central1-geminiChat" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Beginning execution of \"us-central1-geminiChat\""}}
+[debug] [2025-11-06T12:31:45.092Z] [worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: BUSY"}}
+[warn] ⚠  Google API requested!
+   - URL: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=AIzaSyCkw_cPT9QG-nYh1PupsYwCkIsma64Qa5k"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Google API requested!\n   - URL: \"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=AIzaSyCkw_cPT9QG-nYh1PupsYwCkIsma64Qa5k\"\n   - Be careful, this may be a production service."}}
+[debug] [2025-11-06T12:31:47.368Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-geminiChat" in 2276.51375ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finished \"us-central1-geminiChat\" in 2276.51375ms"}}
+[debug] [2025-11-06T12:31:47.369Z] [worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: IDLE"}}
+[debug] [2025-11-06T12:31:47.369Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-06T12:31:47.369Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-06T12:31:47.369Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-06T12:31:54.611Z] [work-queue] {"queuedWork":["/gps-school-d322b/us-central1/geminiChat-2025-11-06T12:31:54.611Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-06T12:31:54.612Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/gps-school-d322b/us-central1/geminiChat-2025-11-06T12:31:54.611Z"],"workRunningCount":1}
+[debug] [2025-11-06T12:31:54.612Z] Accepted request OPTIONS /gps-school-d322b/us-central1/geminiChat --> us-central1-geminiChat
+[debug] [2025-11-06T12:31:54.619Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-06T12:31:54.621Z] [functions] Got req.url=/gps-school-d322b/us-central1/geminiChat, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/gps-school-d322b/us-central1/geminiChat, mapping to path=/"}}
+[debug] [2025-11-06T12:31:54.621Z] [worker-pool] submitRequest(triggerId=us-central1-geminiChat) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-geminiChat)"}}
+[info] i  functions: Beginning execution of "us-central1-geminiChat" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Beginning execution of \"us-central1-geminiChat\""}}
+[debug] [2025-11-06T12:31:54.622Z] [worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: BUSY"}}
+[debug] [2025-11-06T12:31:54.627Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-geminiChat" in 5.337042ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finished \"us-central1-geminiChat\" in 5.337042ms"}}
+[debug] [2025-11-06T12:31:54.628Z] [worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: IDLE"}}
+[debug] [2025-11-06T12:31:54.628Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-06T12:31:54.628Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-06T12:31:54.628Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-06T12:31:54.631Z] [work-queue] {"queuedWork":["/gps-school-d322b/us-central1/geminiChat-2025-11-06T12:31:54.631Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-06T12:31:54.631Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/gps-school-d322b/us-central1/geminiChat-2025-11-06T12:31:54.631Z"],"workRunningCount":1}
+[debug] [2025-11-06T12:31:54.632Z] Accepted request POST /gps-school-d322b/us-central1/geminiChat --> us-central1-geminiChat
+[debug] [2025-11-06T12:31:54.634Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-06T12:31:54.634Z] [functions] Got req.url=/gps-school-d322b/us-central1/geminiChat, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/gps-school-d322b/us-central1/geminiChat, mapping to path=/"}}
+[debug] [2025-11-06T12:31:54.635Z] [worker-pool] submitRequest(triggerId=us-central1-geminiChat) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-geminiChat)"}}
+[info] i  functions: Beginning execution of "us-central1-geminiChat" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Beginning execution of \"us-central1-geminiChat\""}}
+[debug] [2025-11-06T12:31:54.635Z] [worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: BUSY"}}
+[debug] [2025-11-06T12:31:59.300Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-geminiChat" in 4665.2528330000005ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finished \"us-central1-geminiChat\" in 4665.2528330000005ms"}}
+[debug] [2025-11-06T12:31:59.301Z] [worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: IDLE"}}
+[debug] [2025-11-06T12:31:59.301Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-06T12:31:59.301Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-06T12:31:59.302Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-06T12:32:18.500Z] [work-queue] {"queuedWork":["/gps-school-d322b/us-central1/geminiChat-2025-11-06T12:32:18.499Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-06T12:32:18.501Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/gps-school-d322b/us-central1/geminiChat-2025-11-06T12:32:18.499Z"],"workRunningCount":1}
+[debug] [2025-11-06T12:32:18.502Z] Accepted request POST /gps-school-d322b/us-central1/geminiChat --> us-central1-geminiChat
+[debug] [2025-11-06T12:32:18.513Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-06T12:32:18.514Z] [functions] Got req.url=/gps-school-d322b/us-central1/geminiChat, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/gps-school-d322b/us-central1/geminiChat, mapping to path=/"}}
+[debug] [2025-11-06T12:32:18.514Z] [worker-pool] submitRequest(triggerId=us-central1-geminiChat) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-geminiChat)"}}
+[info] i  functions: Beginning execution of "us-central1-geminiChat" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Beginning execution of \"us-central1-geminiChat\""}}
+[debug] [2025-11-06T12:32:18.515Z] [worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: BUSY"}}
+[debug] [2025-11-06T12:32:23.673Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-geminiChat" in 5159.758542ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finished \"us-central1-geminiChat\" in 5159.758542ms"}}
+[debug] [2025-11-06T12:32:23.675Z] [worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"[worker-us-central1-geminiChat-17a47a3e-05d6-47ab-9fe0-a7bb9bc5730e]: IDLE"}}
+[debug] [2025-11-06T12:32:23.675Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-06T12:32:23.676Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-geminiChat"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-06T12:32:23.676Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}

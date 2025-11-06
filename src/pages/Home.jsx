@@ -1,7 +1,15 @@
+// src/pages/Home.jsx
+import React, { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import heroImg from "../assets/hero.jpg";
 import activitiesImg from "../assets/SchoolActivities.jpg";
 import teachersPhoto from "../assets/teachers-group.jpg";
+
+/**
+ * Lazy-load the Chatbot so any problems inside the Chatbot (missing package, runtime error)
+ * won't break the whole page. If Chatbot fails to load, the page still works.
+ */
+const Chatbot = lazy(() => import("../components/Chatbot"));
 
 export default function Home() {
   return (
@@ -37,7 +45,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* New: Mission and Quick Facts Section */}
+      {/* Mission and Quick Facts */}
       <div className="container mx-auto my-12 flex flex-col md:flex-row gap-8 items-center">
         <div className="flex-1">
           <h2 className="text-2xl font-bold text-primary mb-3">Our Mission</h2>
@@ -60,7 +68,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* New: Teachers Intro */}
+      {/* Teachers Intro */}
       <div className="container mx-auto my-12 text-center">
         <h2 className="text-2xl font-bold text-accent mb-4">Meet Our Caring Teachers</h2>
         <img
@@ -73,7 +81,7 @@ export default function Home() {
         </p>
       </div>
 
-      {/* New: Activities/Facilities Spotlight */}
+      {/* Activities/Facilities Spotlight */}
       <div className="container mx-auto my-16 flex flex-col md:flex-row gap-10 items-center bg-white rounded-xl shadow-lg p-8">
         <img
           src={activitiesImg}
@@ -110,6 +118,11 @@ export default function Home() {
           Start Your Application Now
         </a>
       </div>
+
+      {/* Chatbot widget (lazy-loaded so it can't break the page) */}
+      <Suspense fallback={null}>
+        <Chatbot />
+      </Suspense>
     </section>
   );
 }
