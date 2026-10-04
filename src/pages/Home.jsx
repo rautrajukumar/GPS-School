@@ -1,15 +1,9 @@
 // src/pages/Home.jsx
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import heroImg from "../assets/hero.jpg";
 import activitiesImg from "../assets/SchoolActivities.jpg";
 import teachersPhoto from "../assets/teachers-group.jpg";
-
-/**
- * Lazy-load the Chatbot so any problems inside the Chatbot (missing package, runtime error)
- * won't break the whole page. If Chatbot fails to load, the page still works.
- */
-const Chatbot = lazy(() => import("../components/Chatbot"));
 
 export default function Home() {
   return (
@@ -72,7 +66,7 @@ export default function Home() {
       <div className="container mx-auto my-12 text-center">
         <h2 className="text-2xl font-bold text-accent mb-4">Meet Our Caring Teachers</h2>
         <img
-          src={teachersPhoto}
+          src="/Screenshot_20251106-210142 (1).png"
           alt="Gaushala Public School Teachers"
           className="mx-auto rounded-full shadow-lg w-36 h-36 object-cover mb-4 border-4 border-accent"
         />
@@ -118,11 +112,6 @@ export default function Home() {
           Start Your Application Now
         </a>
       </div>
-
-      {/* Chatbot widget (lazy-loaded so it can't break the page) */}
-      <Suspense fallback={null}>
-        <Chatbot />
-      </Suspense>
     </section>
   );
 }

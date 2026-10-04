@@ -1,191 +1,83 @@
-// src/components/Chatbot.jsx
-import React, { useEffect, useRef, useState } from "react";
+// api/geminiChat.js - Serverless Function (e.g., for Vercel deployment)
 
-// Simple chat bubbles
-function BotMessage({ text }) {
-  return (
-    <div className="bg-gray-100 text-gray-900 rounded-lg px-3 py-2 max-w-xs shadow-sm">
-      {text}
-    </div>
-  );
-}
+const SCHOOL_SYSTEM_INSTRUCTION = `You are the official AI Assistant for Gaushala Public School (GPS), a leading primary school established in 2010.
+Key Details:
+- Grades offered: Nursery, KG, and Classes 1 to 5.
+- Vision: Nurture young minds for lifelong learning, responsibility, and joy.
+- Mission: Inspire and empower children to achieve their highest potential in a loving, secure, and inclusive environment.
+- History: Founded in 2010 (Nursery & KG), expanded to Class 5 in 2015, awarded for excellence in primary education in 2022.
+- Annual Fees: Nursery & KG is ₹15,000/year; Class 1 to 5 is ₹18,000/year.
+- Timings: Monday to Friday 8:30 AM – 2:00 PM; Saturday 8:30 AM – 12:30 PM (Sunday closed).
+- Extracurriculars: Art & Craft, Music & Dance, Sports & Yoga, Storytelling, and digital smart classes.
+- Contact: Gaushala Public School, Main Road; Email: contact@gpschool.edu; Phone: +91-90000-90000.
+Instructions:
+- Keep your answers concise, warm, helpful, and friendly.
+- Use bullet points when presenting lists or fees.`;
 
-function UserMessage({ text }) {
-  return (
-    <div className="bg-blue-600 text-white rounded-lg px-3 py-2 max-w-xs self-end shadow-sm">
-      {text}
-    </div>
-  );
-}
+module.exports = async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-// Simple icons
-function ChatIconSVG({ className = "w-6 h-6" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path
-        d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+  if (req.method === "OPTIONS") {
+    return res.status(204).end();
+  }
 
-function XIconSVG({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path
-        d="M18 6L6 18M6 6l12 12"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Only POST allowed" });
+  }
 
-export default function Chatbot() {
-  const [open, setOpen] = useState(false);
-  const [input, setInput] = useState("");
-  const [messages, setMessages] = useState([
-    { from: "bot", text: "Hi! I’m the school assistant 🤖. Ask me anything about admissions, timings, or facilities!" },
-  ]);
-  const [loading, setLoading] = useState(false);
-  const boxRef = useRef();
+  const { message, history } = req.body || {};
+  if (!message || typeof message !== "string") {
+    return res.status(400).json({ error: "Missing 'message' string in body" });
+  }
 
-  useEffect(() => {
-    if (boxRef.current) boxRef.current.scrollTop = boxRef.current.scrollHeight;
-  }, [messages, open]);
+  const key = process.env.GEMINI_KEY || process.env.VITE_GEMINI_API_KEY || "AIzaSyCkw_cPT9QG-nYh1PupsYwCkIsma64Qa5k";
 
-  // 👇 The magic: connect to your Gemini API hosted on Vercel
-  async function sendToGemini(userText) {
-    try {
-      const response = await fetch("/api/geminiChat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userText }),
-      });
+  try {
+    const model = "gemini-2.5-flash";
+    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(key)}`;
 
-      const data = await response.json();
-      return data.reply || "Sorry, I didn’t understand that.";
-    } catch (error) {
-      console.error("Chatbot error:", error);
-      return "⚠️ Network error — please try again.";
+    const contents = [];
+    if (Array.isArray(history)) {
+      for (const msg of history) {
+        if (msg.role && msg.text) {
+          contents.push({
+            role: msg.role === "bot" ? "model" : "user",
+            parts: [{ text: msg.text }],
+          });
+        }
+      }
     }
+    contents.push({
+      role: "user",
+      parts: [{ text: message }],
+    });
+
+    const payload = {
+      systemInstruction: {
+        parts: [{ text: SCHOOL_SYSTEM_INSTRUCTION }],
+      },
+      contents,
+    };
+
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      console.error("Gemini API error:", response.status, errText);
+      return res.status(502).json({ error: "Upstream API error" });
+    }
+
+    const data = await response.json();
+    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a reply.";
+    return res.status(200).json({ reply });
+  } catch (error) {
+    console.error("Chat API error:", error);
+    return res.status(500).json({ error: "Server error", details: String(error) });
   }
-
-  async function handleSend(e) {
-    e.preventDefault();
-    const text = input.trim();
-    if (!text) return;
-
-    setMessages((m) => [...m, { from: "user", text }]);
-    setInput("");
-    setLoading(true);
-
-    // Fetch Gemini reply
-    const reply = await sendToGemini(text);
-
-    setMessages((m) => [...m, { from: "user", text }, { from: "bot", text: reply }]);
-    setLoading(false);
-  }
-
-  return (
-    <>
-      {/* Chat Panel */}
-      <div
-        className={`fixed right-4 bottom-20 z-50 transition-all ${
-          open ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-        style={{ width: 360 }}
-      >
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col h-96">
-          {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
-                S
-              </div>
-              <div>
-                <div className="font-semibold">School Assistant</div>
-                <div className="text-xs text-gray-500">
-                  Powered by Gemini 🤖
-                </div>
-              </div>
-            </div>
-            <button
-              aria-label="Close chat"
-              className="p-2 rounded-md hover:bg-gray-100"
-              onClick={() => setOpen(false)}
-              title="Close"
-            >
-              <XIconSVG className="w-5 h-5 text-gray-600" />
-            </button>
-          </div>
-
-          {/* Messages */}
-          <div
-            ref={boxRef}
-            className="flex-1 p-4 overflow-y-auto space-y-3 bg-gradient-to-b from-white to-gray-50"
-          >
-            <div className="flex flex-col gap-3">
-              {messages.map((m, i) =>
-                m.from === "bot" ? (
-                  <div key={i} className="flex">
-                    <BotMessage text={m.text} />
-                  </div>
-                ) : (
-                  <div key={i} className="flex justify-end">
-                    <UserMessage text={m.text} />
-                  </div>
-                )
-              )}
-              {loading && (
-                <div className="flex">
-                  <BotMessage text="Thinking..." />
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Input */}
-          <form onSubmit={handleSend} className="border-t px-3 py-3">
-            <div className="flex gap-2 items-center">
-              <input
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Type your message..."
-                className="flex-1 rounded-full px-4 py-2 border focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button
-                type="submit"
-                disabled={loading}
-                className="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:opacity-95 disabled:opacity-60"
-              >
-                Send
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      {/* Floating Chat Button */}
-      <div className="fixed z-50 right-4 bottom-4">
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="w-14 h-14 rounded-full shadow-2xl bg-blue-600 flex items-center justify-center text-white transform hover:scale-105 transition"
-          title="Chat with us"
-        >
-          {!open ? (
-            <ChatIconSVG className="w-7 h-7" />
-          ) : (
-            <XIconSVG className="w-6 h-6" />
-          )}
-        </button>
-      </div>
-    </>
-  );
-}
+};
