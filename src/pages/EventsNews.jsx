@@ -5,15 +5,15 @@ export default function EventsNews() {
       <div className="mb-8">
         <h3 className="font-semibold text-lg">Upcoming Events</h3>
         <ul className="list-disc ml-6 text-gray-700">
-          <li>Annual Sports Meet – August 20th, 2025</li>
-          <li>Children’s Day Celebration – November 14th, 2025</li>
-          <li>Parent-Teacher Meet – December 3rd, 2025</li>
+          <li>Annual Sports Meet – August 20th, 2026</li>
+          <li>Children’s Day Celebration – November 14th, 2026</li>
+          <li>Parent-Teacher Meet – December 3rd, 2026</li>
         </ul>
       </div>
       <div className="mb-8">
         <h3 className="font-semibold text-lg">Announcements</h3>
         <div className="bg-yellow-100 p-4 rounded mb-2">
-          <strong>New!</strong> Admissions for 2025-26 are now open.
+          <strong>New!</strong> Admissions for 2026-27 are now open.
         </div>
         <div className="bg-green-100 p-4 rounded mb-2">
           <strong>Result:</strong> GPS won 1st prize in State Drawing
