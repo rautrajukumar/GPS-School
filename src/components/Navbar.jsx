@@ -24,17 +24,17 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2 text-green-700 font-bold text-lg">
           <FaSchool className="text-primary text-2xl" />
-          <span>Gaushala Public School</span>
+          <span className="whitespace-nowrap">Gaushala Public School</span>
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6">
+        <div className="hidden lg:flex space-x-6">
           {navLinks.map(({ to, label }) => (
             <NavLink
               key={to}
               to={to}
               className={({ isActive }) =>
-                `font-medium text-gray-700 hover:text-secondary transition ${
+                `whitespace-nowrap font-medium text-gray-700 hover:text-secondary transition ${
                   isActive ? "text-secondary font-bold" : ""
                 }`
               }
@@ -48,7 +48,7 @@ export default function Navbar() {
         {/* Hamburger Button (Mobile) */}
         <button
           onClick={toggleMenu}
-          className="md:hidden p-2 rounded focus:outline-none focus:ring"
+          className="lg:hidden p-2 rounded focus:outline-none focus:ring"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
           {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
@@ -57,7 +57,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Drawer */}
       {menuOpen && (
-        <div className="md:hidden bg-white shadow-lg border-t border-gray-200">
+        <div className="lg:hidden bg-white shadow-lg border-t border-gray-200">
           <div className="flex flex-col space-y-4 p-4">
             {navLinks.map(({ to, label }) => (
               <NavLink
